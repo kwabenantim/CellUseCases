@@ -1,3 +1,6 @@
+#ifndef TESTNEWCELLPROPERTY_HPP_
+#define TESTNEWCELLPROPERTY_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -14,6 +17,10 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
 #include "SmartPointers.hpp"
+
+#include "MotileCellProperty.hpp"
+#include "MyMotiveForce.hpp"
+
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
@@ -127,3 +134,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTNEWCELLPROPERTY_HPP_

@@ -1,3 +1,6 @@
+#ifndef CELLMOTILITYWRITER_HPP_
+#define CELLMOTILITYWRITER_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -13,9 +16,11 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
 #include "SmartPointers.hpp"
-#include "PetscSetupAndFinalize.hpp"
-
 #include "AbstractCellWriter.hpp"
+
+#include "MotileCellProperty.hpp"
+
+#include "PetscSetupAndFinalize.hpp"
 
 template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
 class CellMotilityWriter : public AbstractCellWriter<ELEMENT_DIM, SPACE_DIM>
@@ -58,3 +63,5 @@ public:
 EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
 #include "SerializationExportWrapperForCpp.hpp"
 EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
+
+#endif // CELLMOTILITYWRITER_HPP_

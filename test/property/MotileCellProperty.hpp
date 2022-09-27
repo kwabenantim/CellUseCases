@@ -1,3 +1,6 @@
+#ifndef MOTILECELLPROPERTY_HPP_
+#define MOTILECELLPROPERTY_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -52,3 +55,5 @@ public:
 CHASTE_CLASS_EXPORT(MotileCellProperty)
 #include "SerializationExportWrapperForCpp.hpp"
 CHASTE_CLASS_EXPORT(MotileCellProperty)
+
+#endif // MOTILECELLPROPERTY_HPP_

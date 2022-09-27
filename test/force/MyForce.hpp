@@ -1,3 +1,6 @@
+#ifndef MYFORCE_HPP_
+#define MYFORCE_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -62,3 +65,5 @@ public:
 CHASTE_CLASS_EXPORT(MyForce)
 #include "SerializationExportWrapperForCpp.hpp"
 CHASTE_CLASS_EXPORT(MyForce)
+
+#endif // MYFORCE_HPP_

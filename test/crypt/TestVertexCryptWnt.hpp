@@ -1,3 +1,6 @@
+#ifndef TESTMESHVERTEXCRYPTWNT_HPP_
+#define TESTMESHVERTEXCRYPTWNT_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -57,3 +60,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTMESHVERTEXCRYPTWNT_HPP_

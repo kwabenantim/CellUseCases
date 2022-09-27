@@ -1,3 +1,6 @@
+#ifndef TESTMESHCRYPT_HPP_
+#define TESTMESHCRYPT_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "SmartPointers.hpp"
@@ -45,3 +48,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTMESHCRYPT_HPP_

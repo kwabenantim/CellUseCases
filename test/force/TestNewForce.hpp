@@ -1,3 +1,6 @@
+#ifndef TESTNEWFORCE_HPP_
+#define TESTNEWFORCE_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -10,6 +13,8 @@
 #include "CellsGenerator.hpp"
 #include "TransitCellProliferativeType.hpp"
 #include "SmartPointers.hpp"
+
+#include "MyForce.hpp"
 
 #include "FakePetscSetup.hpp"
 
@@ -93,3 +98,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTNEWFORCE_HPP_

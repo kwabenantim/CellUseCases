@@ -1,3 +1,6 @@
+#ifndef MYMOTIVEFORCE_HPP_
+#define MYMOTIVEFORCE_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -68,3 +71,5 @@ public:
 CHASTE_CLASS_EXPORT(MyMotiveForce)
 #include "SerializationExportWrapperForCpp.hpp"
 CHASTE_CLASS_EXPORT(MyMotiveForce)
+
+#endif // MYMOTIVEFORCE_HPP_

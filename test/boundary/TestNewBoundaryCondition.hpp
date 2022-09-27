@@ -1,3 +1,6 @@
+#ifndef TESTNEWBOUNDARYCONDITION_HPP_
+#define TESTNEWBOUNDARYCONDITION_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -11,6 +14,9 @@
 #include "FixedG1GenerationalCellCycleModel.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
 #include "SmartPointers.hpp"
+
+#include "MyBoundaryCondition.hpp"
+
 #include "FakePetscSetup.hpp"
 
 class TestNewBoundaryCondition : public AbstractCellBasedTestSuite
@@ -94,3 +100,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTNEWBOUNDARYCONDITION_HPP_

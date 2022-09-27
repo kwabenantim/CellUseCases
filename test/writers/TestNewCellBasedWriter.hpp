@@ -1,3 +1,6 @@
+#ifndef TESTNEWCELLBASEDWRITER_HPP_
+#define TESTNEWCELLBASEDWRITER_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -13,9 +16,11 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
 #include "SmartPointers.hpp"
-#include "PetscSetupAndFinalize.hpp"
-
 #include "AbstractCellWriter.hpp"
+
+#include "CellMotilityWriter.hpp"
+
+#include "PetscSetupAndFinalize.hpp"
 
 class TestNewCellBasedWriter : public AbstractCellBasedTestSuite
 {
@@ -74,3 +79,5 @@ public:
         simulator.Solve();
     }
 };
+
+#endif // TESTNEWCELLBASEDWRITER_HPP_

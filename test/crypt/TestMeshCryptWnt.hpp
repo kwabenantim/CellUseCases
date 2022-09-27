@@ -1,3 +1,6 @@
+#ifndef TESTMESHCRYPTWNT_HPP_
+#define TESTMESHCRYPTWNT_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "SmartPointers.hpp"
@@ -51,3 +54,5 @@ public:
         WntConcentration<2>::Destroy();
     }
 };
+
+#endif // TESTMESHCRYPTWNT_HPP_

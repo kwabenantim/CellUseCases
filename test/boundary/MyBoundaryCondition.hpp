@@ -1,3 +1,6 @@
+#ifndef MYBOUNDARYCONDITION_HPP_
+#define MYBOUNDARYCONDITION_HPP_
+
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -105,3 +108,5 @@ namespace boost
         }
     }
 }
+
+#endif // MYBOUNDARYCONDITION_HPP_
