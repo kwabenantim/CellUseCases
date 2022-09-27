@@ -1,3 +1,7 @@
-TestBasicMesh.hpp
-TestBasicNode.hpp
-TetBasicVertex.hpp
+basic/TestBasicMesh.hpp
+basic/TestBasicNode.hpp
+basic/TetBasicVertex.hpp
+basic/TestBasicMeshGhost.hpp
+basic/TestBasicMeshPeriodic.hpp
+basic/TestBasicMeshPeriodicObstructions.hpp
+basic/TestBasicPotts.hpp

@@ -34,4 +34,4 @@
 
 # This allows us to build executables (apps) using the project.
 # Simply set the project name in the line below.
-chaste_do_apps_project(PerMedCoE)
+chaste_do_apps_project(CellUseCases)
