@@ -1,22 +1,40 @@
+#include <cxxtest/TestSuite.h>
+#include "CellBasedSimulationArchiver.hpp"
 #include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "AdhesionPottsUpdateRule.hpp"
 #include "CellsGenerator.hpp"
+#include "CylindricalHoneycombMeshGenerator.hpp"
+#include "GeneralisedLinearSpringForce.hpp"
+#include "HoneycombMeshGenerator.hpp"
 #include "HoneycombVertexMeshGenerator.hpp"
+#include "MeshBasedCellPopulationWithGhostNodes.hpp"
 #include "NagaiHondaForce.hpp"
 #include "SimpleTargetAreaModifier.hpp"
+#include "NodeBasedCellPopulation.hpp"
 #include "OffLatticeSimulation.hpp"
+#include "OnLatticeSimulation.hpp"
+#include "PlaneBoundaryCondition.hpp"
+#include "PottsBasedCellPopulation.hpp"
+#include "PottsMeshGenerator.hpp"
+#include "RandomCellKiller.hpp"
+#include "RepulsionForce.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
+#include "SurfaceAreaConstraintPottsUpdateRule.hpp"
+#include "TysonNovakCellCycleModel.hpp"
 #include "VertexBasedCellPopulation.hpp"
+#include "VolumeConstraintPottsUpdateRule.hpp"
+#include "VoronoiDataWriter.hpp"
 
 #include "FakePetscSetup.hpp"
 
-class TestBasicMesh : public AbstractCellBasedTestSuite
+class TestNode : public AbstractCellBasedTestSuite
 {
     public:
-    // In a "mesh-based" simulation, cells are represented by their centres 
-    // and a Voronoi tessellation is used to find nearest neighbours.
-    // This is a simple mesh-based simulation of an epithelial monolayer.
-    void TestMeshBasedMonolayer()
+    // In a "node-based" simulation, cells are represented by overlapping spheres
+    // (these are actually circles in 2D).
+    // This is a simple node-based simulation of an epithelial monolayer.
+    void TestNodeBasedMonolayer()
     {
         // Create a 2D NodesOnlyMesh to hold the spatial information of the simulation
         HoneycombMeshGenerator generator(2, 2); // Generates generic meshes
@@ -67,4 +85,4 @@ class TestBasicMesh : public AbstractCellBasedTestSuite
         TS_ASSERT_EQUALS(cell_population.GetNumRealCells(), 7u);
         TS_ASSERT_DELTA(SimulationTime::Instance()->GetTime(), 20.0, 1e-10);
     }
-}
+};

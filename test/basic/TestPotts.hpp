@@ -28,7 +28,7 @@
 
 #include "FakePetscSetup.hpp"
 
-class TestBasicPotts : public AbstractCellBasedTestSuite
+class TestPotts : public AbstractCellBasedTestSuite
 {
     public:
     void TestPottsBasedMonolayer()
@@ -63,4 +63,4 @@ class TestBasicPotts : public AbstractCellBasedTestSuite
         TS_ASSERT_EQUALS(cell_population.GetNumRealCells(), 16u);
         TS_ASSERT_DELTA(SimulationTime::Instance()->GetTime(), 20.0, 1e-10);
     }
-}
+};

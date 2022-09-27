@@ -28,7 +28,7 @@
 
 #include "FakePetscSetup.hpp"
 
-class TestBasicMeshPeriodic: public AbstractCellBasedTestSuite
+class TestMeshPeriodic: public AbstractCellBasedTestSuite
 {
     public:
     void TestMeshBasedMonolayerPeriodic()
@@ -59,4 +59,4 @@ class TestBasicMeshPeriodic: public AbstractCellBasedTestSuite
         TS_ASSERT_EQUALS(cell_population.GetNumRealCells(), 29u);
         TS_ASSERT_DELTA(SimulationTime::Instance()->GetTime(), 20.0, 1e-10);
     }
-}
+};
