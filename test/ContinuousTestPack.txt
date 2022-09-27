@@ -1,6 +1,6 @@
 basic/TestBasicMesh.hpp
 basic/TestBasicNode.hpp
-basic/TetBasicVertex.hpp
+basic/TestBasicVertex.hpp
 basic/TestBasicMeshGhost.hpp
 basic/TestBasicMeshPeriodic.hpp
 basic/TestBasicMeshPeriodicObstructions.hpp

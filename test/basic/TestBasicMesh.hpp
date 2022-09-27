@@ -1,32 +1,14 @@
-// #include <cxxtest/TestSuite.h>
-// #include "CellBasedSimulationArchiver.hpp"
 #include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-// #include "AdhesionPottsUpdateRule.hpp"
 #include "CellsGenerator.hpp"
-// #include "CylindricalHoneycombMeshGenerator.hpp"
-// #include "GeneralisedLinearSpringForce.hpp"
-// #include "HoneycombMeshGenerator.hpp"
 #include "HoneycombVertexMeshGenerator.hpp"
-// #include "MeshBasedCellPopulationWithGhostNodes.hpp"
 #include "NagaiHondaForce.hpp"
 #include "SimpleTargetAreaModifier.hpp"
-// #include "NodeBasedCellPopulation.hpp"
 #include "OffLatticeSimulation.hpp"
-// #include "OnLatticeSimulation.hpp"
-// #include "PlaneBoundaryCondition.hpp"
-// #include "PottsBasedCellPopulation.hpp"
-// #include "PottsMeshGenerator.hpp"
-// #include "RandomCellKiller.hpp"
-// #include "RepulsionForce.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
-// #include "SurfaceAreaConstraintPottsUpdateRule.hpp"
-// #include "TysonNovakCellCycleModel.hpp"
 #include "VertexBasedCellPopulation.hpp"
-// #include "VolumeConstraintPottsUpdateRule.hpp"
-// #include "VoronoiDataWriter.hpp"
 
-// #include "FakePetscSetup.hpp"
+#include "FakePetscSetup.hpp"
 
 class TestBasicMesh : public AbstractCellBasedTestSuite
 {
