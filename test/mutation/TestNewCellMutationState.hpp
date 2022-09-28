@@ -2,8 +2,9 @@
 #define TESTNEWCELLMUTATIONSTATE_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "CheckpointArchiveTypes.hpp"
+#include "SmartPointers.hpp"
 
 #include "AbstractCellMutationState.hpp"
 #include "HoneycombMeshGenerator.hpp"
@@ -13,7 +14,6 @@
 #include "OffLatticeSimulation.hpp"
 #include "CellMutationStatesCountWriter.hpp"
 #include "CellsGenerator.hpp"
-#include "SmartPointers.hpp"
 
 #include "P53GainOfFunctionCellMutationState.hpp"
 
