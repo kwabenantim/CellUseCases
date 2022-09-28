@@ -2,20 +2,20 @@
 #define TESTMESHTUMOURSPHEROID_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
+#include "RandomNumberGenerator.hpp"
+
 #include "HoneycombMeshGenerator.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
-#include "RandomNumberGenerator.hpp"
-#include "SmartPointers.hpp"
 #include "SimpleOxygenBasedCellCycleModel.hpp"
 #include "WildTypeCellMutationState.hpp"
 #include "StemCellProliferativeType.hpp"
 #include "CellwiseSourceEllipticPde.hpp"
 #include "ConstBoundaryCondition.hpp"
 #include "EllipticGrowingDomainPdeModifier.hpp"
-
 #include "OffLatticeSimulation.hpp"
+
 #include "PetscSetupAndFinalize.hpp"
 
 class TestMeshTumourSpheroid : public AbstractCellBasedTestSuite
