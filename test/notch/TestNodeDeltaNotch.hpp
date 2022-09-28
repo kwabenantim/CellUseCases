@@ -2,30 +2,25 @@
 #define TESTNODEDELTANOTCH_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
+
 #include "HoneycombMeshGenerator.hpp"
-#include "HoneycombVertexMeshGenerator.hpp"
 #include "NodeBasedCellPopulation.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "VertexBasedCellPopulation.hpp"
-#include "NagaiHondaForce.hpp"
-#include "SimpleTargetAreaModifier.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
 #include "WildTypeCellMutationState.hpp"
 #include "CellAgesWriter.hpp"
 #include "CellIdWriter.hpp"
-#include "CellProliferativePhasesWriter.hpp"
-#include "CellVolumesWriter.hpp"
 #include "CellMutationStatesCountWriter.hpp"
 #include "CellProliferativePhasesCountWriter.hpp"
 #include "CellProliferativeTypesCountWriter.hpp"
-#include "SmartPointers.hpp"
-#include "PetscSetupAndFinalize.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
 #include "DeltaNotchSrnModel.hpp"
 #include "DeltaNotchTrackingModifier.hpp"
+
+#include "PetscSetupAndFinalize.hpp"
 
 class TestNodeDeltaNotch : public AbstractCellBasedTestSuite
 {
