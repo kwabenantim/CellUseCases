@@ -10,7 +10,6 @@
 
 #include "AbstractSimpleGenerationalCellCycleModel.hpp"
 
-#include "CheckReadyToDivideAndPhaseIsUpdated.hpp"
 #include "HoneycombMeshGenerator.hpp"
 #include "WildTypeCellMutationState.hpp"
 #include "GeneralisedLinearSpringForce.hpp"

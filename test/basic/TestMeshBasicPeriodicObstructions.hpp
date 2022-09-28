@@ -2,31 +2,15 @@
 #define TESTMESHBASICPERIODICOBSTRUCTIONS_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CellBasedSimulationArchiver.hpp"
 #include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-#include "AdhesionPottsUpdateRule.hpp"
 #include "CellsGenerator.hpp"
 #include "CylindricalHoneycombMeshGenerator.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
-#include "HoneycombMeshGenerator.hpp"
-#include "HoneycombVertexMeshGenerator.hpp"
 #include "MeshBasedCellPopulationWithGhostNodes.hpp"
-#include "NagaiHondaForce.hpp"
-#include "SimpleTargetAreaModifier.hpp"
-#include "NodeBasedCellPopulation.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "OnLatticeSimulation.hpp"
 #include "PlaneBoundaryCondition.hpp"
-#include "PottsBasedCellPopulation.hpp"
-#include "PottsMeshGenerator.hpp"
-#include "RandomCellKiller.hpp"
-#include "RepulsionForce.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
-#include "SurfaceAreaConstraintPottsUpdateRule.hpp"
-#include "TysonNovakCellCycleModel.hpp"
-#include "VertexBasedCellPopulation.hpp"
-#include "VolumeConstraintPottsUpdateRule.hpp"
 #include "VoronoiDataWriter.hpp"
 
 #include "FakePetscSetup.hpp"
@@ -43,13 +27,13 @@ class TestMeshBasicPeriodicObstructions: public AbstractCellBasedTestSuite
         std::vector<CellPtr> cells;
         MAKE_PTR(StemCellProliferativeType, p_stem_type);
         CellsGenerator<UniformG1GenerationalCellCycleModel, 2> cells_generator;
-        cells_generator.GenerateBasicRandom(cells, location_indices.size(), p_stem_type); //**Changed**//
+        cells_generator.GenerateBasicRandom(cells, location_indices.size(), p_stem_type); 
 
         MeshBasedCellPopulationWithGhostNodes<2> cell_population(*p_mesh, cells, location_indices);
         cell_population.AddPopulationWriter<VoronoiDataWriter>();
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("CellBasedDemo6"); //**Changed**//
+        simulator.SetOutputDirectory("CellBasedDemo6"); 
         simulator.SetSamplingTimestepMultiple(50);
         simulator.SetEndTime(20.0);
 
