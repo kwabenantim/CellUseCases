@@ -2,8 +2,9 @@
 #define TESTNEWFORCE_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "CheckpointArchiveTypes.hpp"
+#include "SmartPointers.hpp"
 
 #include "AbstractForce.hpp"
 #include "HoneycombMeshGenerator.hpp"
@@ -12,7 +13,6 @@
 #include "OffLatticeSimulation.hpp"
 #include "CellsGenerator.hpp"
 #include "TransitCellProliferativeType.hpp"
-#include "SmartPointers.hpp"
 
 #include "NewForce.hpp"
 

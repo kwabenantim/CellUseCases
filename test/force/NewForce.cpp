@@ -1,18 +1,4 @@
-#include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
-#include "AbstractCellBasedTestSuite.hpp"
-
 #include "AbstractForce.hpp"
-#include "HoneycombMeshGenerator.hpp"
-#include "FixedG1GenerationalCellCycleModel.hpp"
-#include "GeneralisedLinearSpringForce.hpp"
-#include "OffLatticeSimulation.hpp"
-#include "CellsGenerator.hpp"
-#include "TransitCellProliferativeType.hpp"
-#include "SmartPointers.hpp"
-
-#include "FakePetscSetup.hpp"
-
 #include "NewForce.hpp"
 
 template<class Archive>

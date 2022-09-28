@@ -2,8 +2,9 @@
 #define TESTVERTEXDIFFERENTIALADHESION_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
+
 #include "HoneycombVertexMeshGenerator.hpp"
 #include "CellsGenerator.hpp"
 #include "FixedG1GenerationalCellCycleModel.hpp"
@@ -17,12 +18,10 @@
 #include "CellProliferativeTypesCountWriter.hpp"
 #include "CellProliferativePhasesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "SmartPointers.hpp"
-#include "FakePetscSetup.hpp"
-
 #include "NagaiHondaDifferentialAdhesionForce.hpp"
-
 #include "SimpleTargetAreaModifier.hpp"
+
+#include "FakePetscSetup.hpp"
 
 class TestVertexDifferentialAdhesion : public AbstractCellBasedTestSuite
 {
