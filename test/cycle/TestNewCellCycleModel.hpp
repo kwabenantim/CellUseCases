@@ -2,13 +2,9 @@
 #define TESTNEWCELLCYCLEMODEL_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-
 #include "SmartPointers.hpp"
 #include "Exception.hpp"
-
-#include "AbstractSimpleGenerationalCellCycleModel.hpp"
 
 #include "CheckReadyToDivideAndPhaseIsUpdated.hpp"
 #include "HoneycombMeshGenerator.hpp"
@@ -17,7 +13,6 @@
 #include "OffLatticeSimulation.hpp"
 #include "StemCellProliferativeType.hpp"
 #include "TransitCellProliferativeType.hpp"
-#include "DifferentiatedCellProliferativeType.hpp"
 
 #include "NewCellCycleModel.hpp"
 

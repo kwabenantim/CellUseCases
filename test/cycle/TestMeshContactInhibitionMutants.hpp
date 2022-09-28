@@ -2,16 +2,12 @@
 #define TESTMESHCONTACTINHIBITIONMUTANTS_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-
 #include "SmartPointers.hpp"
 #include "Exception.hpp"
 
 #include "ContactInhibitionCellCycleModel.hpp"
-
 #include "VolumeTrackingModifier.hpp"
-
 #include "OffLatticeSimulation.hpp"
 #include "MeshBasedCellPopulation.hpp"
 #include "CellMutationStatesCountWriter.hpp"
@@ -20,16 +16,10 @@
 #include "StemCellProliferativeType.hpp"
 #include "TransitCellProliferativeType.hpp"
 #include "HoneycombMeshGenerator.hpp"
-#include "HoneycombVertexMeshGenerator.hpp"
-#include "OutputFileHandler.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
-#include "NagaiHondaForce.hpp"
-#include "SimpleTargetAreaModifier.hpp"
-#include "SimulationTime.hpp"
-#include "CellLabel.hpp"
 #include "MutableMesh.hpp"
-#include "MutableVertexMesh.hpp"
 #include "PlaneBoundaryCondition.hpp"
+
 #include "FakePetscSetup.hpp"
 
 class TestMeshContactInhibitionMutants : public AbstractCellBasedTestSuite

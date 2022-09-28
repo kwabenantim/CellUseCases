@@ -1,21 +1,10 @@
-#include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
-#include "AbstractCellBasedTestSuite.hpp"
-
-#include "SmartPointers.hpp"
-#include "Exception.hpp"
+#include "RandomNumberGenerator.hpp"
 
 #include "AbstractSimpleGenerationalCellCycleModel.hpp"
-
-#include "HoneycombMeshGenerator.hpp"
-#include "WildTypeCellMutationState.hpp"
-#include "GeneralisedLinearSpringForce.hpp"
-#include "OffLatticeSimulation.hpp"
 #include "StemCellProliferativeType.hpp"
 #include "TransitCellProliferativeType.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
-//This test is always run sequentially (never in parallel)
-#include "FakePetscSetup.hpp"
 
 #include "NewCellCycleModel.hpp"
 

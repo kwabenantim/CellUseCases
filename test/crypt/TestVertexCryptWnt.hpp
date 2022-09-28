@@ -3,17 +3,12 @@
 
 #include <cxxtest/TestSuite.h>
 #include "AbstractCellBasedTestSuite.hpp"
-#include "CheckpointArchiveTypes.hpp"
 #include "SmartPointers.hpp"
 
-// #include "CellsGenerator.hpp"
 #include "CryptCellsGenerator.hpp"
 #include "WntConcentration.hpp"
 #include "SloughingCellKiller.hpp"
-// #include "OffLatticeSimulation.hpp"
-// #include "FixedG1GenerationalCellCycleModel.hpp"
 #include "SimpleWntCellCycleModel.hpp"
-// #include "HoneycombVertexMeshGenerator.hpp"
 #include "CylindricalHoneycombVertexMeshGenerator.hpp"
 #include "CryptSimulation2d.hpp"
 #include "VertexBasedCellPopulation.hpp"
