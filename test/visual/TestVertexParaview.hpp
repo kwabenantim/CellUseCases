@@ -2,25 +2,16 @@
 #define TESTVERTEXPARAVIEW_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
 
-#include "UniformCellCycleModel.hpp"
 #include "FixedG1GenerationalCellCycleModel.hpp"
-#include "HoneycombMeshGenerator.hpp"
-#include "CylindricalHoneycombMeshGenerator.hpp"
 #include "HoneycombVertexMeshGenerator.hpp"
 #include "CellsGenerator.hpp"
-#include "MeshBasedCellPopulationWithGhostNodes.hpp"
-#include "NodeBasedCellPopulation.hpp"
 #include "VertexBasedCellPopulation.hpp"
-#include "GeneralisedLinearSpringForce.hpp"
 #include "NagaiHondaForce.hpp"
 #include "SimpleTargetAreaModifier.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "TransitCellProliferativeType.hpp"
-#include "SmartPointers.hpp"
-#include "VoronoiDataWriter.hpp"
 
 #include "FakePetscSetup.hpp"
 
