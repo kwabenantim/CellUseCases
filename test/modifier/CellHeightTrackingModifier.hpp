@@ -20,56 +20,25 @@
 
 class CellHeightTrackingModifier : public AbstractCellBasedSimulationModifier<2,2>
 {
+private:
+
     friend class boost::serialization::access;
     template<class Archive>
-    void serialize(Archive & archive, const unsigned int version)
-    {
-        archive & boost::serialization::base_object<AbstractCellBasedSimulationModifier<2,2> >(*this);
-    }
+    void serialize(Archive & archive, const unsigned int version);
 
 public:
 
-    CellHeightTrackingModifier()
-        : AbstractCellBasedSimulationModifier<2,2>()
-    {}
+    CellHeightTrackingModifier();
 
-    ~CellHeightTrackingModifier()
-    {}
+    ~CellHeightTrackingModifier() {}
 
-    void UpdateAtEndOfTimeStep(AbstractCellPopulation<2,2>& rCellPopulation)
-    {
-        UpdateCellData(rCellPopulation);
-    }
+    void UpdateAtEndOfTimeStep(AbstractCellPopulation<2,2>& rCellPopulation);
 
-    void SetupSolve(AbstractCellPopulation<2,2>& rCellPopulation, std::string outputDirectory)
-    {
+    void SetupSolve(AbstractCellPopulation<2,2>& rCellPopulation, std::string outputDirectory);
 
-        UpdateCellData(rCellPopulation);
-    }
+    void UpdateCellData(AbstractCellPopulation<2,2>& rCellPopulation);
 
-    void UpdateCellData(AbstractCellPopulation<2,2>& rCellPopulation)
-    {
-        rCellPopulation.Update();
-
-        for (AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin();
-             cell_iter != rCellPopulation.End();
-             ++cell_iter)
-        {
-            double cell_height = rCellPopulation.GetLocationOfCellCentre(*cell_iter)[1];
-
-            cell_iter->GetCellData()->SetItem("height", cell_height);
-        }
-    }
-
-    void OutputSimulationModifierParameters(out_stream& rParamsFile)
-    {
-        AbstractCellBasedSimulationModifier<2>::OutputSimulationModifierParameters(rParamsFile);
-    }
+    void OutputSimulationModifierParameters(out_stream& rParamsFile);
 };
-
-#include "SerializationExportWrapper.hpp"
-CHASTE_CLASS_EXPORT(CellHeightTrackingModifier)
-#include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(CellHeightTrackingModifier)
 
 #endif // TESTCELLHEIGHTTRACKINGMODIFIER_HPP_

@@ -18,6 +18,7 @@
 #include "SmartPointers.hpp"
 #include "AbstractCellWriter.hpp"
 
+#include "MotileCellProperty.hpp"
 #include "CellMotilityWriter.hpp"
 
 #include "PetscSetupAndFinalize.hpp"

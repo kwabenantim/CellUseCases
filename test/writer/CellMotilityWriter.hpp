@@ -1,10 +1,9 @@
-#ifndef MOTILECELLPROPERTY_HPP_
-#define MOTILECELLPROPERTY_HPP_
+#ifndef CELLMOTILITYWRITER_HPP_
+#define CELLMOTILITYWRITER_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-
 #include "AbstractCellProperty.hpp"
 #include "AbstractForce.hpp"
 #include "HoneycombMeshGenerator.hpp"
@@ -17,32 +16,35 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
 #include "SmartPointers.hpp"
-//This test is always run sequentially (never in parallel)
-#include "FakePetscSetup.hpp"
+#include "AbstractCellWriter.hpp"
 
-class MotileCellProperty : public AbstractCellProperty
+// #include "MotileCellProperty.hpp"
+
+#include "PetscSetupAndFinalize.hpp"
+
+template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
+class CellMotilityWriter : public AbstractCellWriter<ELEMENT_DIM, SPACE_DIM>
 {
 private:
 
-    unsigned mColour;
-
     friend class boost::serialization::access;
-    
+
     template<class Archive>
     void serialize(Archive & archive, const unsigned int version);
 
 public:
 
-    MotileCellProperty(unsigned colour=5);
+    CellMotilityWriter();
 
-    ~MotileCellProperty() {}
+    double GetCellDataForVtkOutput(CellPtr pCell, AbstractCellPopulation<ELEMENT_DIM, SPACE_DIM>* pCellPopulation);
 
-    unsigned GetColour() const;
+    void VisitCell(CellPtr pCell, AbstractCellPopulation<ELEMENT_DIM, SPACE_DIM>* pCellPopulation);
+
 };
 
 // #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MotileCellProperty)
-#include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MotileCellProperty)
+// EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
+// #include "SerializationExportWrapperForCpp.hpp"
+// EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
 
-#endif // MOTILECELLPROPERTY_HPP_
+#endif // CELLMOTILITYWRITER_HPP_

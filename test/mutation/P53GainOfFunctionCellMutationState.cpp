@@ -1,6 +1,3 @@
-#ifndef P53GAINOFFUNCTIONCELLMUTATIONSTATE_HPP_
-#define P53GAINOFFUNCTIONCELLMUTATIONSTATE_HPP_
-
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -14,24 +11,23 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "CellsGenerator.hpp"
 #include "SmartPointers.hpp"
+
 #include "FakePetscSetup.hpp"
 
-class P53GainOfFunctionCellMutationState : public AbstractCellMutationState
+#include "MotileCellProperty.hpp"
+#include "P53GainOfFunctionCellMutationState.hpp"
+
+template<class Archive>
+void P53GainOfFunctionCellMutationState::serialize(Archive & archive, const unsigned int version)
 {
-private:
+    archive & boost::serialization::base_object<AbstractCellMutationState>(*this);
+}
 
-    friend class boost::serialization::access;
-    template<class Archive>
-    void serialize(Archive & archive, const unsigned int version);
-
-public:
-
-    P53GainOfFunctionCellMutationState();
-};
+P53GainOfFunctionCellMutationState::P53GainOfFunctionCellMutationState()
+    : AbstractCellMutationState(5)
+{}
 
 // #include "SerializationExportWrapper.hpp"
 // CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
-// #include "SerializationExportWrapperForCpp.hpp"
-// CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
-
-#endif // P53GAINOFFUNCTIONCELLMUTATIONSTATE_HPP_
+#include "SerializationExportWrapperForCpp.hpp"
+CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)

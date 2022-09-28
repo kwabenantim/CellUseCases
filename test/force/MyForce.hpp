@@ -24,46 +24,16 @@ private:
 
     friend class boost::serialization::access;
     template<class Archive>
-    void serialize(Archive & archive, const unsigned int version)
-    {
-        archive & boost::serialization::base_object<AbstractForce<2> >(*this);
-        archive & mStrength;
-    }
+    void serialize(Archive & archive, const unsigned int version);
 
 public:
-    MyForce(double strength=1.0)
-        : AbstractForce<2>(),
-          mStrength(strength)
-    {
-        assert(mStrength > 0.0);
-    }
+    MyForce(double strength=1.0);
 
-    void AddForceContribution(AbstractCellPopulation<2>& rCellPopulation)
-    {
-        c_vector<double, 2> force = zero_vector<double>(2);
-        force(1) = -mStrength;
+    void AddForceContribution(AbstractCellPopulation<2>& rCellPopulation);
 
-        for (unsigned node_index=0; node_index<rCellPopulation.GetNumNodes(); node_index++)
-        {
-            rCellPopulation.GetNode(node_index)->AddAppliedForceContribution(force);
-        }
-    }
+    double GetStrength();
 
-    double GetStrength()
-    {
-        return mStrength;
-    }
-
-    void OutputForceParameters(out_stream& rParamsFile)
-    {
-        *rParamsFile << "\t\t\t<Strength>" << mStrength << "</Strength>\n";
-        AbstractForce<2>::OutputForceParameters(rParamsFile);
-    }
+    void OutputForceParameters(out_stream& rParamsFile);
 };
-
-#include "SerializationExportWrapper.hpp"
-CHASTE_CLASS_EXPORT(MyForce)
-#include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MyForce)
 
 #endif // MYFORCE_HPP_

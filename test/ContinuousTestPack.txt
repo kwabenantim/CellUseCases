@@ -28,4 +28,4 @@ visual/TestMeshParaview.hpp
 visual/TestMeshPeriodicParaview.hpp
 visual/TestNodeParaview.hpp
 visual/TestVertexParaview.hpp
-writers/TestNewCellBasedWriter.hpp
+writer/TestNewCellBasedWriter.hpp

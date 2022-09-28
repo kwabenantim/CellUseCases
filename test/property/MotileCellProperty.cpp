@@ -1,6 +1,3 @@
-#ifndef MOTILECELLPROPERTY_HPP_
-#define MOTILECELLPROPERTY_HPP_
-
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
@@ -20,29 +17,21 @@
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
-class MotileCellProperty : public AbstractCellProperty
+#include "MotileCellProperty.hpp"
+
+template<class Archive>
+void MotileCellProperty::serialize(Archive & archive, const unsigned int version)
 {
-private:
+    archive & boost::serialization::base_object<AbstractCellProperty>(*this);
+    archive & mColour;
+}
 
-    unsigned mColour;
+MotileCellProperty::MotileCellProperty(unsigned colour)
+    : AbstractCellProperty(),
+        mColour(colour)
+{}
 
-    friend class boost::serialization::access;
-    
-    template<class Archive>
-    void serialize(Archive & archive, const unsigned int version);
-
-public:
-
-    MotileCellProperty(unsigned colour=5);
-
-    ~MotileCellProperty() {}
-
-    unsigned GetColour() const;
-};
-
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MotileCellProperty)
-#include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MotileCellProperty)
-
-#endif // MOTILECELLPROPERTY_HPP_
+unsigned MotileCellProperty::GetColour() const
+{
+    return mColour;
+}
