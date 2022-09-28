@@ -2,11 +2,12 @@
 #define TESTNEWSIMULATIONMODIFIER_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+// #include "CheckpointArchiveTypes.hpp"
+#include "SmartPointers.hpp"
 
-#include "AbstractCellBasedSimulationModifier.hpp"
-#include "AbstractForce.hpp"
+// #include "AbstractCellBasedSimulationModifier.hpp"
+// #include "AbstractForce.hpp"
 #include "HoneycombMeshGenerator.hpp"
 #include "NodesOnlyMesh.hpp"
 #include "CellsGenerator.hpp"
@@ -14,7 +15,6 @@
 #include "TransitCellProliferativeType.hpp"
 #include "RepulsionForce.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "SmartPointers.hpp"
 
 #include "CellHeightTrackingModifier.hpp"
 
