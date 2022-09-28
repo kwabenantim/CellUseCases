@@ -1,18 +1,4 @@
-#include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
-#include "AbstractCellBasedTestSuite.hpp"
-
 #include "AbstractCellPopulationBoundaryCondition.hpp"
-#include "OffLatticeSimulation.hpp"
-#include "HoneycombMeshGenerator.hpp"
-#include "HoneycombVertexMeshGenerator.hpp"
-#include "VertexBasedCellPopulation.hpp"
-#include "CellsGenerator.hpp"
-#include "FixedG1GenerationalCellCycleModel.hpp"
-#include "GeneralisedLinearSpringForce.hpp"
-#include "SmartPointers.hpp"
-#include "FakePetscSetup.hpp"
-
 #include "NewBoundaryCondition.hpp"
 
 template<class Archive>

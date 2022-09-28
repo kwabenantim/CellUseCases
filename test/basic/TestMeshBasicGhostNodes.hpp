@@ -2,8 +2,9 @@
 #define TESTMESHBASICGHOSTNODES_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
+
 #include "CellsGenerator.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
 #include "HoneycombMeshGenerator.hpp"

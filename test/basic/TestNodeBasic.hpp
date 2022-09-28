@@ -2,8 +2,9 @@
 #define TESTNODEBASIC_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
+
 #include "CellsGenerator.hpp"
 #include "HoneycombMeshGenerator.hpp"
 #include "NodeBasedCellPopulation.hpp"
