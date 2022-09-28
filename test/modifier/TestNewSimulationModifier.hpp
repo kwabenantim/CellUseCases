@@ -3,11 +3,8 @@
 
 #include <cxxtest/TestSuite.h>
 #include "AbstractCellBasedTestSuite.hpp"
-// #include "CheckpointArchiveTypes.hpp"
 #include "SmartPointers.hpp"
 
-// #include "AbstractCellBasedSimulationModifier.hpp"
-// #include "AbstractForce.hpp"
 #include "HoneycombMeshGenerator.hpp"
 #include "NodesOnlyMesh.hpp"
 #include "CellsGenerator.hpp"

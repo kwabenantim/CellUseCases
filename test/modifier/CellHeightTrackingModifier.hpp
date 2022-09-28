@@ -1,23 +1,8 @@
 #ifndef TESTCELLHEIGHTTRACKINGMODIFIER_HPP_
 #define TESTCELLHEIGHTTRACKINGMODIFIER_HPP_
 
-// #include <cxxtest/TestSuite.h>
-// #include "CheckpointArchiveTypes.hpp"
-// #include "AbstractCellBasedTestSuite.hpp"
-
 #include "AbstractCellPopulation.hpp"
 #include "AbstractCellBasedSimulationModifier.hpp"
-// #include "AbstractForce.hpp"
-// #include "HoneycombMeshGenerator.hpp"
-// #include "NodesOnlyMesh.hpp"
-// #include "CellsGenerator.hpp"
-// #include "UniformCellCycleModel.hpp"
-// #include "TransitCellProliferativeType.hpp"
-// #include "RepulsionForce.hpp"
-// #include "OffLatticeSimulation.hpp"
-// #include "SmartPointers.hpp"
-//This test is always run sequentially (never in parallel)
-// #include "FakePetscSetup.hpp"
 
 class CellHeightTrackingModifier : public AbstractCellBasedSimulationModifier<2,2>
 {
