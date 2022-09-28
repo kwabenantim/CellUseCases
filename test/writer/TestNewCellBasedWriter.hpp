@@ -2,10 +2,9 @@
 #define TESTNEWCELLBASEDWRITER_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-#include "AbstractCellProperty.hpp"
-#include "AbstractForce.hpp"
+#include "SmartPointers.hpp"
+
 #include "HoneycombMeshGenerator.hpp"
 #include "NodesOnlyMesh.hpp"
 #include "WildTypeCellMutationState.hpp"
@@ -13,10 +12,7 @@
 #include "CellLabel.hpp"
 #include "FixedG1GenerationalCellCycleModel.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
-#include "CellMutationStatesCountWriter.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "SmartPointers.hpp"
-#include "AbstractCellWriter.hpp"
 
 #include "MotileCellProperty.hpp"
 #include "CellMotilityWriter.hpp"

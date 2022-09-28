@@ -1,26 +1,8 @@
 #ifndef CELLMOTILITYWRITER_HPP_
 #define CELLMOTILITYWRITER_HPP_
 
-#include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
-#include "AbstractCellBasedTestSuite.hpp"
-#include "AbstractCellProperty.hpp"
-#include "AbstractForce.hpp"
-#include "HoneycombMeshGenerator.hpp"
-#include "NodesOnlyMesh.hpp"
-#include "WildTypeCellMutationState.hpp"
-#include "DifferentiatedCellProliferativeType.hpp"
-#include "CellLabel.hpp"
-#include "FixedG1GenerationalCellCycleModel.hpp"
-#include "GeneralisedLinearSpringForce.hpp"
-#include "CellMutationStatesCountWriter.hpp"
-#include "OffLatticeSimulation.hpp"
-#include "SmartPointers.hpp"
+#include "AbstractCellPopulation.hpp"
 #include "AbstractCellWriter.hpp"
-
-// #include "MotileCellProperty.hpp"
-
-#include "PetscSetupAndFinalize.hpp"
 
 template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
 class CellMotilityWriter : public AbstractCellWriter<ELEMENT_DIM, SPACE_DIM>
