@@ -2,18 +2,15 @@
 #define TESTMESHCRYPT_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
-#include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
 
 #include "CryptCellsGenerator.hpp"
 #include "FixedG1GenerationalCellCycleModel.hpp"
-#include "WntCellCycleModel.hpp"
 #include "CylindricalHoneycombMeshGenerator.hpp"
 #include "MeshBasedCellPopulationWithGhostNodes.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
 #include "CryptSimulation2d.hpp"
-#include "WntConcentration.hpp"
 #include "SloughingCellKiller.hpp"
 
 #include "FakePetscSetup.hpp"

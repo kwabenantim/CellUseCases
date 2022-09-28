@@ -2,9 +2,8 @@
 #define TESTMESHCRYPTMUTATIONS_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
-#include "SmartPointers.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
+#include "SmartPointers.hpp"
 
 #include "CryptCellsGenerator.hpp"
 #include "SimpleWntCellCycleModel.hpp"
@@ -16,6 +15,7 @@
 #include "SloughingCellKiller.hpp"
 #include "ApcTwoHitCellMutationState.hpp"
 #include "CellMutationStatesCountWriter.hpp"
+
 #include "FakePetscSetup.hpp"
 
 class TestMeshCryptMutations : public AbstractCellBasedTestSuite
