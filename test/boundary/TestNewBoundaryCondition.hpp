@@ -15,7 +15,7 @@
 #include "GeneralisedLinearSpringForce.hpp"
 #include "SmartPointers.hpp"
 
-#include "MyBoundaryCondition.hpp"
+#include "NewBoundaryCondition.hpp"
 
 #include "FakePetscSetup.hpp"
 
@@ -23,7 +23,7 @@ class TestNewBoundaryCondition : public AbstractCellBasedTestSuite
 {
 public:
 
-    void TestMyBoundaryCondition()
+    void TestBoundaryCondition()
     {
         HoneycombMeshGenerator generator(7, 7);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -34,7 +34,7 @@ public:
 
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
-        MyBoundaryCondition bc(&cell_population);
+        NewBoundaryCondition bc(&cell_population);
 
         bool population_satisfies_bc = bc.VerifyBoundaryCondition();
         TS_ASSERT_EQUALS(population_satisfies_bc, false);
@@ -58,7 +58,7 @@ public:
             std::ofstream ofs(archive_filename.c_str());
             boost::archive::text_oarchive output_arch(ofs);
 
-            AbstractCellPopulationBoundaryCondition<2>* const p_bc = new MyBoundaryCondition(NULL);
+            AbstractCellPopulationBoundaryCondition<2>* const p_bc = new NewBoundaryCondition(NULL);
             output_arch << p_bc;
             delete p_bc;
         }
@@ -73,7 +73,7 @@ public:
         }
     }
 
-    void TestOffLatticeSimulationWithMyBoundaryCondition()
+    void TestOffLatticeSimulationWithBoundaryCondition()
     {
         HoneycombMeshGenerator generator(7, 7, 0);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -84,10 +84,10 @@ public:
 
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
-        MAKE_PTR_ARGS(MyBoundaryCondition, p_bc, (&cell_population));
+        MAKE_PTR_ARGS(NewBoundaryCondition, p_bc, (&cell_population));
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("TestOffLatticeSimulationWithMyBoundaryCondition");
+        simulator.SetOutputDirectory("TestOffLatticeSimulationWithBoundaryCondition");
         simulator.SetSamplingTimestepMultiple(12);
         simulator.SetEndTime(1.0);
 

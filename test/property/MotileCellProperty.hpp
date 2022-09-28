@@ -40,9 +40,7 @@ public:
     unsigned GetColour() const;
 };
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MotileCellProperty)
-#include "SerializationExportWrapperForCpp.hpp"
+#include "SerializationExportWrapper.hpp"
 CHASTE_CLASS_EXPORT(MotileCellProperty)
 
 #endif // MOTILECELLPROPERTY_HPP_

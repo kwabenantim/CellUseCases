@@ -1,5 +1,5 @@
-#ifndef MYCELLCYCLEMODEL_HPP_
-#define MYCELLCYCLEMODEL_HPP_
+#ifndef NEWCELLCYCLEMODEL_HPP_
+#define NEWCELLCYCLEMODEL_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -21,7 +21,7 @@
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
-class MyCellCycleModel : public AbstractSimpleGenerationalCellCycleModel
+class NewCellCycleModel : public AbstractSimpleGenerationalCellCycleModel
 {
 private:
 
@@ -33,9 +33,12 @@ private:
 
 public:
 
-    MyCellCycleModel() {}
+    NewCellCycleModel() {}
 
     AbstractCellCycleModel* CreateCellCycleModel();
 };
 
-#endif // MYCELLCYCLEMODEL_HPP_
+#include "SerializationExportWrapper.hpp"
+CHASTE_CLASS_EXPORT(NewCellCycleModel)
+
+#endif // NEWCELLCYCLEMODEL_HPP_

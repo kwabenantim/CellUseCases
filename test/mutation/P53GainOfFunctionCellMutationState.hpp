@@ -29,9 +29,7 @@ public:
     P53GainOfFunctionCellMutationState();
 };
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
-// #include "SerializationExportWrapperForCpp.hpp"
-// CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
+#include "SerializationExportWrapper.hpp"
+CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
 
 #endif // P53GAINOFFUNCTIONCELLMUTATIONSTATE_HPP_

@@ -35,3 +35,6 @@ unsigned MotileCellProperty::GetColour() const
 {
     return mColour;
 }
+
+#include "SerializationExportWrapperForCpp.hpp"
+CHASTE_CLASS_EXPORT(MotileCellProperty)

@@ -19,7 +19,7 @@
 #include "SmartPointers.hpp"
 
 #include "MotileCellProperty.hpp"
-#include "MyMotiveForce.hpp"
+#include "NewMotiveForce.hpp"
 
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
@@ -128,7 +128,7 @@ public:
         p_linear_force->SetCutOffLength(1.5);
         simulator.AddForce(p_linear_force);
 
-        MAKE_PTR(MyMotiveForce, p_motive_force);
+        MAKE_PTR(NewMotiveForce, p_motive_force);
         simulator.AddForce(p_motive_force);
 
         simulator.Solve();

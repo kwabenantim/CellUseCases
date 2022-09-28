@@ -18,23 +18,23 @@
 #include "FakePetscSetup.hpp"
 
 #include "MotileCellProperty.hpp"
-#include "MyMotiveForce.hpp"
+#include "NewMotiveForce.hpp"
 
 template<class Archive>
-void MyMotiveForce::serialize(Archive & archive, const unsigned int version)
+void NewMotiveForce::serialize(Archive & archive, const unsigned int version)
 {
     archive & boost::serialization::base_object<AbstractForce<2> >(*this);
     archive & mStrength;
 }
 
-MyMotiveForce::MyMotiveForce(double strength)
+NewMotiveForce::NewMotiveForce(double strength)
     : AbstractForce<2>(),
         mStrength(strength)
 {
     assert(mStrength > 0.0);
 }
 
-void MyMotiveForce::AddForceContribution(AbstractCellPopulation<2>& rCellPopulation)
+void NewMotiveForce::AddForceContribution(AbstractCellPopulation<2>& rCellPopulation)
 {
     for (AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin();
             cell_iter != rCellPopulation.End();
@@ -52,8 +52,11 @@ void MyMotiveForce::AddForceContribution(AbstractCellPopulation<2>& rCellPopulat
     }
 }
 
-void MyMotiveForce::OutputForceParameters(out_stream& rParamsFile)
+void NewMotiveForce::OutputForceParameters(out_stream& rParamsFile)
 {
     *rParamsFile << "\t\t\t<Strength>" << mStrength << "</Strength>\n";
     AbstractForce<2>::OutputForceParameters(rParamsFile);
 }
+
+#include "SerializationExportWrapperForCpp.hpp"
+CHASTE_CLASS_EXPORT(NewMotiveForce)

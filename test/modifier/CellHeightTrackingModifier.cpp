@@ -57,7 +57,5 @@ void CellHeightTrackingModifier::OutputSimulationModifierParameters(out_stream& 
     AbstractCellBasedSimulationModifier<2>::OutputSimulationModifierParameters(rParamsFile);
 }
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(CellHeightTrackingModifier)
 #include "SerializationExportWrapperForCpp.hpp"
 CHASTE_CLASS_EXPORT(CellHeightTrackingModifier)

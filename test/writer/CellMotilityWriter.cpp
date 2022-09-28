@@ -20,12 +20,12 @@
 #include "MotileCellProperty.hpp"
 #include "CellMotilityWriter.hpp"
 
-// template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
-// template<class Archive>
-// void CellMotilityWriter<ELEMENT_DIM, SPACE_DIM>::serialize(Archive & archive, const unsigned int version)
-// {
-//     archive & boost::serialization::base_object<AbstractCellWriter<ELEMENT_DIM, SPACE_DIM> >(*this);
-// }
+template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
+template<class Archive>
+void CellMotilityWriter<ELEMENT_DIM, SPACE_DIM>::serialize(Archive & archive, const unsigned int version)
+{
+    archive & boost::serialization::base_object<AbstractCellWriter<ELEMENT_DIM, SPACE_DIM> >(*this);
+}
 
 template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
 CellMotilityWriter<ELEMENT_DIM, SPACE_DIM>::CellMotilityWriter()
@@ -52,7 +52,5 @@ void CellMotilityWriter<ELEMENT_DIM, SPACE_DIM>::VisitCell(CellPtr pCell, Abstra
     *this->mpOutStream << pCell->HasCellProperty<MotileCellProperty>() << " ";
 }
 
-// #include "SerializationExportWrapper.hpp"
-// EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
 #include "SerializationExportWrapperForCpp.hpp"
 EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)

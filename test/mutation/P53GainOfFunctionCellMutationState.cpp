@@ -27,7 +27,5 @@ P53GainOfFunctionCellMutationState::P53GainOfFunctionCellMutationState()
     : AbstractCellMutationState(5)
 {}
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)
 #include "SerializationExportWrapperForCpp.hpp"
 CHASTE_CLASS_EXPORT(P53GainOfFunctionCellMutationState)

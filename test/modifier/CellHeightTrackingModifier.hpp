@@ -41,4 +41,7 @@ public:
     void OutputSimulationModifierParameters(out_stream& rParamsFile);
 };
 
+#include "SerializationExportWrapper.hpp"
+CHASTE_CLASS_EXPORT(CellHeightTrackingModifier)
+
 #endif // TESTCELLHEIGHTTRACKINGMODIFIER_HPP_

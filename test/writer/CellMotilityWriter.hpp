@@ -42,9 +42,7 @@ public:
 
 };
 
-// #include "SerializationExportWrapper.hpp"
-// EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
-// #include "SerializationExportWrapperForCpp.hpp"
-// EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
+#include "SerializationExportWrapper.hpp"
+EXPORT_TEMPLATE_CLASS_ALL_DIMS(CellMotilityWriter)
 
 #endif // CELLMOTILITYWRITER_HPP_

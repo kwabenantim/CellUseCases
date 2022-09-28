@@ -1,5 +1,5 @@
-#ifndef MYBOUNDARYCONDITION_HPP_
-#define MYBOUNDARYCONDITION_HPP_
+#ifndef NEWBOUNDARYCONDITION_HPP_
+#define NEWBOUNDARYCONDITION_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -16,7 +16,7 @@
 #include "SmartPointers.hpp"
 #include "FakePetscSetup.hpp"
 
-class MyBoundaryCondition : public AbstractCellPopulationBoundaryCondition<2>
+class NewBoundaryCondition : public AbstractCellPopulationBoundaryCondition<2>
 {
 private:
 
@@ -26,7 +26,7 @@ private:
 
 public:
 
-    MyBoundaryCondition(AbstractCellPopulation<2>* pCellPopulation);
+    NewBoundaryCondition(AbstractCellPopulation<2>* pCellPopulation);
 
     void ImposeBoundaryCondition(const std::map<Node<2>*, c_vector<double, 2> >& rOldLocations);
 
@@ -35,4 +35,7 @@ public:
     void OutputCellPopulationBoundaryConditionParameters(out_stream& rParamsFile);
 };
 
-#endif // MYBOUNDARYCONDITION_HPP_
+#include "SerializationExportWrapper.hpp"
+CHASTE_CLASS_EXPORT(NewBoundaryCondition)
+
+#endif // NEWBOUNDARYCONDITION_HPP_

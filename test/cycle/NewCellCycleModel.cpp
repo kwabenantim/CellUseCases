@@ -18,10 +18,10 @@
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
-#include "MyCellCycleModel.hpp"
+#include "NewCellCycleModel.hpp"
 
 template<class Archive>
-void MyCellCycleModel::serialize(Archive & archive, const unsigned int version)
+void NewCellCycleModel::serialize(Archive & archive, const unsigned int version)
 {
     archive & boost::serialization::base_object<AbstractSimpleGenerationalCellCycleModel>(*this);
     RandomNumberGenerator* p_gen = RandomNumberGenerator::Instance();
@@ -29,7 +29,7 @@ void MyCellCycleModel::serialize(Archive & archive, const unsigned int version)
     archive & p_gen;
 }
 
-void MyCellCycleModel::SetG1Duration()
+void NewCellCycleModel::SetG1Duration()
 {
     assert(mpCell != NULL);
 
@@ -53,9 +53,9 @@ void MyCellCycleModel::SetG1Duration()
     }
 }
 
-AbstractCellCycleModel* MyCellCycleModel::CreateCellCycleModel()
+AbstractCellCycleModel* NewCellCycleModel::CreateCellCycleModel()
 {
-    MyCellCycleModel* p_model = new MyCellCycleModel();
+    NewCellCycleModel* p_model = new NewCellCycleModel();
 
     p_model->SetBirthTime(mBirthTime);
     p_model->SetMinimumGapDuration(mMinimumGapDuration);
@@ -70,7 +70,5 @@ AbstractCellCycleModel* MyCellCycleModel::CreateCellCycleModel()
     return p_model;
 }
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MyCellCycleModel)
 #include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MyCellCycleModel)
+CHASTE_CLASS_EXPORT(NewCellCycleModel)

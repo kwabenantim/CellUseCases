@@ -19,7 +19,7 @@
 #include "CellsGenerator.hpp"
 #include "SmartPointers.hpp"
 
-#include "MyCellKiller.hpp"
+#include "NewCellKiller.hpp"
 
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
@@ -28,7 +28,7 @@ class TestNewCellKiller : public AbstractCellBasedTestSuite
 {
 public:
 
-    void TestMyCellKiller()
+    void TestCellKiller()
     {
         HoneycombMeshGenerator generator(20, 20, 0);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -39,7 +39,7 @@ public:
 
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
-        MyCellKiller my_cell_killer(&cell_population);
+        NewCellKiller my_cell_killer(&cell_population);
 
         cell_population.AddCellPopulationEventWriter<CellRemovalLocationsWriter>();
 
@@ -78,7 +78,7 @@ public:
         std::string archive_filename = handler.GetOutputDirectoryFullPath() + "my_cell_killer.arch";
 
         {
-            AbstractCellKiller<2>* const p_cell_killer = new MyCellKiller(NULL);
+            AbstractCellKiller<2>* const p_cell_killer = new NewCellKiller(NULL);
 
             std::ofstream ofs(archive_filename.c_str());
             boost::archive::text_oarchive output_arch(ofs);
@@ -98,7 +98,7 @@ public:
         }
     }
 
-    void TestOffLatticeSimulationWithMyCellKiller()
+    void TestOffLatticeSimulationWithCellKiller()
     {
         HoneycombMeshGenerator generator(20, 20, 0);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -109,10 +109,10 @@ public:
 
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
-        MAKE_PTR_ARGS(MyCellKiller, p_killer, (&cell_population));
+        MAKE_PTR_ARGS(NewCellKiller, p_killer, (&cell_population));
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("TestOffLatticeSimulationWithMyCellKiller");
+        simulator.SetOutputDirectory("TestOffLatticeSimulationWithCellKiller");
         simulator.SetEndTime(1.0);
 
         MAKE_PTR(GeneralisedLinearSpringForce<2>, p_linear_force);

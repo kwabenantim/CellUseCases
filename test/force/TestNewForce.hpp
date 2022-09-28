@@ -14,7 +14,7 @@
 #include "TransitCellProliferativeType.hpp"
 #include "SmartPointers.hpp"
 
-#include "MyForce.hpp"
+#include "NewForce.hpp"
 
 #include "FakePetscSetup.hpp"
 
@@ -22,7 +22,7 @@ class TestNewForce : public AbstractCellBasedTestSuite
 {
 public:
 
-    void TestMyForce()
+    void TestForce()
     {
         HoneycombMeshGenerator generator(7, 7);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -38,7 +38,7 @@ public:
              cell_population.GetNode(i)->ClearAppliedForce();
         }
 
-        MyForce force(5.0);
+        NewForce force(5.0);
 
         force.AddForceContribution(cell_population);
 
@@ -51,7 +51,7 @@ public:
         OutputFileHandler handler("archive", false);
         std::string archive_filename = handler.GetOutputDirectoryFullPath() + "my_force.arch";
         {
-            AbstractForce<2>* const p_force = new MyForce(2.6);
+            AbstractForce<2>* const p_force = new NewForce(2.6);
             std::ofstream ofs(archive_filename.c_str());
             boost::archive::text_oarchive output_arch(ofs);
 
@@ -65,13 +65,13 @@ public:
             AbstractForce<2>* p_force;
             input_arch >> p_force;
 
-            TS_ASSERT_DELTA(dynamic_cast<MyForce*>(p_force)->GetStrength(), 2.6, 1e-4);
+            TS_ASSERT_DELTA(dynamic_cast<NewForce*>(p_force)->GetStrength(), 2.6, 1e-4);
 
             delete p_force;
         }
     }
 
-    void TestOffLatticeSimulationWithMyForce()
+    void TestOffLatticeSimulationWithForce()
     {
         HoneycombMeshGenerator generator(5, 5);
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -84,11 +84,11 @@ public:
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("TestOffLatticeSimulationWithMyForce");
+        simulator.SetOutputDirectory("TestOffLatticeSimulationWithForce");
         simulator.SetSamplingTimestepMultiple(12);
         simulator.SetEndTime(5.0);
 
-        MAKE_PTR_ARGS(MyForce, p_force, (0.5));
+        MAKE_PTR_ARGS(NewForce, p_force, (0.5));
         simulator.AddForce(p_force);
 
         MAKE_PTR(GeneralisedLinearSpringForce<2>, p_linear_force);

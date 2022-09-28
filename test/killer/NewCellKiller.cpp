@@ -18,19 +18,19 @@
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
-#include "MyCellKiller.hpp"
+#include "NewCellKiller.hpp"
 
 template<class Archive>
-void MyCellKiller::serialize(Archive & archive, const unsigned int version)
+void NewCellKiller::serialize(Archive & archive, const unsigned int version)
 {
     archive & boost::serialization::base_object<AbstractCellKiller<2> >(*this);
 }
 
-MyCellKiller::MyCellKiller(AbstractCellPopulation<2>* pCellPopulation)
+NewCellKiller::NewCellKiller(AbstractCellPopulation<2>* pCellPopulation)
     : AbstractCellKiller<2>(pCellPopulation)
 {}
 
-void MyCellKiller::CheckAndLabelCellsForApoptosisOrDeath()
+void NewCellKiller::CheckAndLabelCellsForApoptosisOrDeath()
 {
     for (AbstractCellPopulation<2>::Iterator cell_iter = this->mpCellPopulation->Begin();
         cell_iter != this->mpCellPopulation->End();
@@ -41,20 +41,18 @@ void MyCellKiller::CheckAndLabelCellsForApoptosisOrDeath()
 
         if (pow(location[0]/20, 2) + pow(location[1]/10, 2) > 1.0)
         {
-            this->mpCellPopulation->KillCell(*cell_iter, "MyCellKiller");
+            this->mpCellPopulation->KillCell(*cell_iter, "NewCellKiller");
         }
     }
 }
 
-void MyCellKiller::OutputCellKillerParameters(out_stream& rParamsFile)
+void NewCellKiller::OutputCellKillerParameters(out_stream& rParamsFile)
 {
     AbstractCellKiller<2>::OutputCellKillerParameters(rParamsFile);
 }
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MyCellKiller)
 #include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MyCellKiller)
+CHASTE_CLASS_EXPORT(NewCellKiller)
 
 namespace boost
 {
@@ -62,7 +60,7 @@ namespace boost
     {
         template<class Archive>
         inline void save_construct_data(
-            Archive & ar, const MyCellKiller * t, const unsigned int file_version)
+            Archive & ar, const NewCellKiller * t, const unsigned int file_version)
         {
             const AbstractCellPopulation<2>* const p_cell_population = t->GetCellPopulation();
             ar << p_cell_population;
@@ -70,13 +68,13 @@ namespace boost
 
         template<class Archive>
         inline void load_construct_data(
-            Archive & ar, MyCellKiller * t, const unsigned int file_version)
+            Archive & ar, NewCellKiller * t, const unsigned int file_version)
         {
             AbstractCellPopulation<2>* p_cell_population;
             ar >> p_cell_population;
 
             // Invoke inplace constructor to initialise instance
-            ::new(t)MyCellKiller(p_cell_population);
+            ::new(t)NewCellKiller(p_cell_population);
         }
     }
 }

@@ -19,7 +19,7 @@
 #include "TransitCellProliferativeType.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
 
-#include "MyCellCycleModel.hpp"
+#include "NewCellCycleModel.hpp"
 
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
@@ -28,9 +28,9 @@ class TestNewCellCycleModel : public AbstractCellBasedTestSuite
 {
 public:
 
-    void TestMyCellCycleModel()
+    void TestCellCycleModel()
     {
-        TS_ASSERT_THROWS_NOTHING(MyCellCycleModel cell_model3);
+        TS_ASSERT_THROWS_NOTHING(NewCellCycleModel cell_model3);
 
         unsigned num_cells = (unsigned) 1e5;
         std::vector<CellPtr> cells;
@@ -39,24 +39,24 @@ public:
         MAKE_PTR(TransitCellProliferativeType, p_transit_type);
         for (unsigned i=0; i<num_cells; i++)
         {
-            MyCellCycleModel* p_cell_cycle_model = new MyCellCycleModel;
+            NewCellCycleModel* p_cell_cycle_model = new NewCellCycleModel;
             CellPtr p_cell(new Cell(p_state, p_cell_cycle_model));
             p_cell->SetCellProliferativeType(p_stem_type);
             p_cell->InitialiseCellCycleModel();
             cells.push_back(p_cell);
         }
 
-        double expected_mean_g1_duration = static_cast<MyCellCycleModel*>(cells[0]->GetCellCycleModel())->GetStemCellG1Duration();
+        double expected_mean_g1_duration = static_cast<NewCellCycleModel*>(cells[0]->GetCellCycleModel())->GetStemCellG1Duration();
         double sample_mean_g1_duration = 0.0;
 
         for (unsigned i=0; i<num_cells; i++)
         {
-            sample_mean_g1_duration += static_cast<MyCellCycleModel*>(cells[i]->GetCellCycleModel())->GetG1Duration()/ (double) num_cells;
+            sample_mean_g1_duration += static_cast<NewCellCycleModel*>(cells[i]->GetCellCycleModel())->GetG1Duration()/ (double) num_cells;
         }
 
         TS_ASSERT_DELTA(sample_mean_g1_duration, expected_mean_g1_duration, 0.1);
 
-        MyCellCycleModel* p_my_model = new MyCellCycleModel;
+        NewCellCycleModel* p_my_model = new NewCellCycleModel;
         CellPtr p_my_cell(new Cell(p_state, p_my_model));
         p_my_cell->SetCellProliferativeType(p_transit_type);
         p_my_cell->InitialiseCellCycleModel();
@@ -83,7 +83,7 @@ public:
             SimulationTime* p_simulation_time = SimulationTime::Instance();
             p_simulation_time->SetEndTimeAndNumberOfTimeSteps(3.0, 4);
 
-            MyCellCycleModel* p_model = new MyCellCycleModel;
+            NewCellCycleModel* p_model = new NewCellCycleModel;
             CellPtr p_cell(new Cell(p_state, p_model));
             p_cell->SetCellProliferativeType(p_transit_type);
             p_cell->InitialiseCellCycleModel();
@@ -116,7 +116,7 @@ public:
 
             input_arch >> p_cell;
 
-            MyCellCycleModel* p_model = static_cast<MyCellCycleModel*>(p_cell->GetCellCycleModel());
+            NewCellCycleModel* p_model = static_cast<NewCellCycleModel*>(p_cell->GetCellCycleModel());
 
             TS_ASSERT_DELTA(p_model->GetBirthTime(), -1.0, 1e-12);
             TS_ASSERT_DELTA(p_model->GetAge(), 2.5, 1e-12);
@@ -124,7 +124,7 @@ public:
         }
     }
 
-    void TestOffLatticeSimulationWithMyCellCycleModel()
+    void TestOffLatticeSimulationWithCellCycleModel()
     {
         HoneycombMeshGenerator generator(10, 10, 0);
         MutableMesh<2,2>* p_mesh = generator.GetCircularMesh(5);
@@ -134,7 +134,7 @@ public:
         MAKE_PTR(StemCellProliferativeType, p_stem_type);
         for (unsigned i=0; i<p_mesh->GetNumNodes(); i++)
         {
-            MyCellCycleModel* p_model = new MyCellCycleModel();
+            NewCellCycleModel* p_model = new NewCellCycleModel();
             CellPtr p_cell(new Cell(p_state, p_model));
             p_cell->SetCellProliferativeType(p_stem_type);
 
@@ -146,7 +146,7 @@ public:
         MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("TestOffLatticeSimulationWithMyCellCycleModel");
+        simulator.SetOutputDirectory("TestOffLatticeSimulationWithCellCycleModel");
         simulator.SetEndTime(10.0);
 
         MAKE_PTR(GeneralisedLinearSpringForce<2>, p_linear_force);

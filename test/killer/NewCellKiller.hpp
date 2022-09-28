@@ -1,5 +1,5 @@
-#ifndef MYCELLKILLER_HPP_
-#define MYCELLKILLER_HPP_
+#ifndef NEWCELLKILLER_HPP_
+#define NEWCELLKILLER_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -21,7 +21,7 @@
 //This test is always run sequentially (never in parallel)
 #include "FakePetscSetup.hpp"
 
-class MyCellKiller : public AbstractCellKiller<2>
+class NewCellKiller : public AbstractCellKiller<2>
 {
 private:
 
@@ -31,11 +31,14 @@ private:
 
 public:
 
-    MyCellKiller(AbstractCellPopulation<2>* pCellPopulation);
+    NewCellKiller(AbstractCellPopulation<2>* pCellPopulation);
 
     void CheckAndLabelCellsForApoptosisOrDeath();
 
     void OutputCellKillerParameters(out_stream& rParamsFile);
 };
 
-#endif // MYCELLKILLER_HPP_
+#include "SerializationExportWrapper.hpp"
+CHASTE_CLASS_EXPORT(NewCellKiller)
+
+#endif // NEWCELLKILLER_HPP_

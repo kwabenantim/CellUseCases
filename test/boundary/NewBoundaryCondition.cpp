@@ -13,19 +13,19 @@
 #include "SmartPointers.hpp"
 #include "FakePetscSetup.hpp"
 
-#include "MyBoundaryCondition.hpp"
+#include "NewBoundaryCondition.hpp"
 
 template<class Archive>
-void MyBoundaryCondition::serialize(Archive & archive, const unsigned int version)
+void NewBoundaryCondition::serialize(Archive & archive, const unsigned int version)
 {
     archive & boost::serialization::base_object<AbstractCellPopulationBoundaryCondition<2> >(*this);
 }
 
-MyBoundaryCondition::MyBoundaryCondition(AbstractCellPopulation<2>* pCellPopulation)
+NewBoundaryCondition::NewBoundaryCondition(AbstractCellPopulation<2>* pCellPopulation)
     : AbstractCellPopulationBoundaryCondition<2>(pCellPopulation)
 {}
 
-void MyBoundaryCondition::ImposeBoundaryCondition(const std::map<Node<2>*, c_vector<double, 2> >& rOldLocations)
+void NewBoundaryCondition::ImposeBoundaryCondition(const std::map<Node<2>*, c_vector<double, 2> >& rOldLocations)
 {
     for (AbstractCellPopulation<2>::Iterator cell_iter = this->mpCellPopulation->Begin();
             cell_iter != this->mpCellPopulation->End();
@@ -46,7 +46,7 @@ void MyBoundaryCondition::ImposeBoundaryCondition(const std::map<Node<2>*, c_vec
     }
 }
 
-bool MyBoundaryCondition::VerifyBoundaryCondition()
+bool NewBoundaryCondition::VerifyBoundaryCondition()
 {
     bool condition_satisfied = true;
 
@@ -66,15 +66,13 @@ bool MyBoundaryCondition::VerifyBoundaryCondition()
     return condition_satisfied;
 }
 
-void MyBoundaryCondition::OutputCellPopulationBoundaryConditionParameters(out_stream& rParamsFile)
+void NewBoundaryCondition::OutputCellPopulationBoundaryConditionParameters(out_stream& rParamsFile)
 {
     AbstractCellPopulationBoundaryCondition<2>::OutputCellPopulationBoundaryConditionParameters(rParamsFile);
 }
 
-// #include "SerializationExportWrapper.hpp"
-// CHASTE_CLASS_EXPORT(MyBoundaryCondition)
 #include "SerializationExportWrapperForCpp.hpp"
-CHASTE_CLASS_EXPORT(MyBoundaryCondition)
+CHASTE_CLASS_EXPORT(NewBoundaryCondition)
 
 namespace boost
 {
@@ -82,7 +80,7 @@ namespace boost
     {
         template<class Archive>
         inline void save_construct_data(
-            Archive & ar, const MyBoundaryCondition * t, const unsigned int file_version)
+            Archive & ar, const NewBoundaryCondition * t, const unsigned int file_version)
         {
             const AbstractCellPopulation<2>* const p_cell_population = t->GetCellPopulation();
             ar << p_cell_population;
@@ -90,12 +88,12 @@ namespace boost
 
         template<class Archive>
         inline void load_construct_data(
-            Archive & ar, MyBoundaryCondition * t, const unsigned int file_version)
+            Archive & ar, NewBoundaryCondition * t, const unsigned int file_version)
         {
             AbstractCellPopulation<2>* p_cell_population;
             ar >> p_cell_population;
 
-            ::new(t)MyBoundaryCondition(p_cell_population);
+            ::new(t)NewBoundaryCondition(p_cell_population);
         }
     }
 }
