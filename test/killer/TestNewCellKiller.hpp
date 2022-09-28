@@ -2,22 +2,17 @@
 #define TESTNEWCELLKILLER_HPP_
 
 #include <cxxtest/TestSuite.h>
-#include "CheckpointArchiveTypes.hpp"
 #include "AbstractCellBasedTestSuite.hpp"
-
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
+#include "CheckpointArchiveTypes.hpp"
+#include "SmartPointers.hpp"
 
 #include "AbstractCellKiller.hpp"
-
 #include "CellRemovalLocationsWriter.hpp"
-
 #include "HoneycombMeshGenerator.hpp"
 #include "FixedG1GenerationalCellCycleModel.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
 #include "OffLatticeSimulation.hpp"
 #include "CellsGenerator.hpp"
-#include "SmartPointers.hpp"
 
 #include "NewCellKiller.hpp"
 
