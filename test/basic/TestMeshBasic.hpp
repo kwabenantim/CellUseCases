@@ -40,72 +40,47 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SmartPointers.hpp"
 
 #include "CellsGenerator.hpp"
+#include "TransitCellProliferativeType.hpp"
+#include "UniformCellCycleModel.hpp"
 #include "HoneycombMeshGenerator.hpp"
-#include "NodeBasedCellPopulation.hpp"
 #include "OffLatticeSimulation.hpp"
-#include "RandomCellKiller.hpp"
-#include "RepulsionForce.hpp"
-#include "UniformG1GenerationalCellCycleModel.hpp"
+#include "MeshBasedCellPopulation.hpp"
+#include "GeneralisedLinearSpringForce.hpp"
+#include "VoronoiDataWriter.hpp"
 
 #include "FakePetscSetup.hpp"
 
 class TestMeshBasic : public AbstractCellBasedTestSuite
 {
-    public:
-    // In a "mesh-based" simulation, cells are represented by their centres 
-    // and a Voronoi tessellation is used to find nearest neighbours.
-    // This is a simple mesh-based simulation of an epithelial monolayer.
-    void TestMeshBasedMonolayer()
-    {
-        // Create a 2D NodesOnlyMesh to hold the spatial information of the simulation
-        HoneycombMeshGenerator generator(2, 2); // Generates generic meshes
-        MutableMesh<2,2>* p_generating_mesh = generator.GetMesh(); // Make a generic mesh
+public:
+  void TestMeshBasedMonolayer()
+  {
+    HoneycombMeshGenerator generator(2, 2);
+    MutableMesh<2,2>* p_mesh = generator.GetMesh();
 
-        // Make a mesh which is not really a mesh but only has nodes in it
-        NodesOnlyMesh<2> mesh;
+    std::vector<CellPtr> cells;
+    MAKE_PTR(TransitCellProliferativeType, p_transit_type);
+    CellsGenerator<UniformCellCycleModel, 2> cells_generator;
+    cells_generator.GenerateBasicRandom(cells, p_mesh->GetNumNodes(), p_transit_type);
 
-        // Put nodes in the generic mesh
-        // The "interaction cut off length" of 1.5 defines connectivity in the mesh.
-        mesh.ConstructNodesWithoutMesh(*p_generating_mesh, 1.5); 
+    MeshBasedCellPopulation<2> cell_population(*p_mesh, cells);
 
-        // Prepare storage for a collection of cells
-        std::vector<CellPtr> cells;
+    cell_population.AddPopulationWriter<VoronoiDataWriter>();
 
-        // Specify the proliferative behaviour of the cell by choosing a CellCycleModel
-        MAKE_PTR(TransitCellProliferativeType, p_transit_type);
-        CellsGenerator<UniformG1GenerationalCellCycleModel, 2> cells_generator;
+    OffLatticeSimulation<2> simulator(cell_population);
+    simulator.SetOutputDirectory("MeshBasedMonolayer");
+    simulator.SetEndTime(10.0);
 
-        // For a node-based simulation, num_cells == num_nodes
-        cells_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), p_transit_type);
+    simulator.SetSamplingTimestepMultiple(12);
 
-        // Create a 2-dimensinal CellPopulation object to connect the mesh and the cells.
-        NodeBasedCellPopulation<2> cell_population(mesh, cells);
+    MAKE_PTR(GeneralisedLinearSpringForce<2>, p_force);
+    simulator.AddForce(p_force);
 
-        // Create an OffLatticeSimulation with the CellPopulation
-        OffLatticeSimulation<2> simulator(cell_population);
+    simulator.Solve();
 
-        // Set some simulation options
-        simulator.SetOutputDirectory("NodeBasedMonolayer");
-        simulator.SetSamplingTimestepMultiple(12);
-        simulator.SetEndTime(20.0);
-
-        // Add a Force object to specify how cells move around
-        // A RepulsionForce is suitable for node-based simulations
-        MAKE_PTR(RepulsionForce<2>, p_force);
-        simulator.AddForce(p_force);
-
-        // A CellKiller can remove cells from any simulation type.
-        // MAKE_PTR_ARGS wraps boost::shared_ptr in global/src/SmartPointers.hpp
-        MAKE_PTR_ARGS(RandomCellKiller<2>, p_cell_killer, (&cell_population, 0.01));
-        simulator.AddCellKiller(p_cell_killer);
-
-        // Run the simulation
-        simulator.Solve();
-
-        // Checking that we have the correct number of cells at the end.
-        TS_ASSERT_EQUALS(cell_population.GetNumRealCells(), 7u);
-        TS_ASSERT_DELTA(SimulationTime::Instance()->GetTime(), 20.0, 1e-10);
-    }
+    TS_ASSERT_EQUALS(cell_population.GetNumRealCells(), 8u);
+    TS_ASSERT_DELTA(SimulationTime::Instance()->GetTime(), 10.0, 1e-10);
+  }
 };
 
 #endif // TESTMESHBASIC_HPP_

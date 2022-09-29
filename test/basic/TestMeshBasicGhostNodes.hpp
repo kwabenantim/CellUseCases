@@ -68,7 +68,7 @@ class TestMeshBasicGhostNodes: public AbstractCellBasedTestSuite
         cell_population.AddPopulationWriter<VoronoiDataWriter>();
 
         OffLatticeSimulation<2> simulator(cell_population);
-        simulator.SetOutputDirectory("CellBasedDemo4"); 
+        simulator.SetOutputDirectory("MeshBasedMonolayerWithGhostNodes"); 
         simulator.SetSamplingTimestepMultiple(12);
         simulator.SetEndTime(2.0); 
 
