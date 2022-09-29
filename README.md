@@ -1,3 +1,3 @@
-# Example use cases for Chaste cell-based simulations.
+# Cell-based Use Cases
 
 A Chaste project.
