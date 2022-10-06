@@ -6,34 +6,49 @@
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "SharedHoneycombVertexMeshGenerator.hpp"
 
-#include "HoneycombVertexMeshGenerator.wrap.hpp"
+#include "HoneycombMeshGenerator.hpp"
+#include "HoneycombMeshGenerator.wrap.hpp"
 
 namespace py = pybind11;
-typedef SharedHoneycombVertexMeshGenerator HoneycombVertexMeshGenerator;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::shared_ptr<MutableVertexMesh<2, 2> > _boost_shared_ptr_lt_MutableVertexMesh_lt_2_2_gt__gt_;
+typedef ::boost::shared_ptr<MutableMesh<2, 2> > _boost_shared_ptr_lt_MutableMesh_lt_2_2_gt__gt_;
 
-class HoneycombVertexMeshGenerator_Overloads : public HoneycombVertexMeshGenerator{
+class HoneycombMeshGenerator_Overloads : public HoneycombMeshGenerator{
     public:
-    using HoneycombVertexMeshGenerator::SharedHoneycombVertexMeshGenerator;
-    ::boost::shared_ptr<MutableVertexMesh<2, 2> > GetMesh() override {
+    using HoneycombMeshGenerator::HoneycombMeshGenerator;
+    ::boost::shared_ptr<MutableMesh<2, 2> > GetMesh() override {
         PYBIND11_OVERLOAD(
-            _boost_shared_ptr_lt_MutableVertexMesh_lt_2_2_gt__gt_,
-            HoneycombVertexMeshGenerator,
+            _boost_shared_ptr_lt_MutableMesh_lt_2_2_gt__gt_,
+            HoneycombMeshGenerator,
             GetMesh,
             );
     }
 
 };
-void register_HoneycombVertexMeshGenerator_class(py::module &m){
-py::class_<HoneycombVertexMeshGenerator , HoneycombVertexMeshGenerator_Overloads , boost::shared_ptr<HoneycombVertexMeshGenerator >   >(m, "HoneycombVertexMeshGenerator")
-        .def(py::init<unsigned int, unsigned int, bool, double, double, double >(), py::arg("numElementsAcross"), py::arg("numElementsUp"), py::arg("isFlatBottom") = false, py::arg("cellRearrangementThreshold") = 0.01, py::arg("t2Threshold") = 0.001, py::arg("elementArea") = 0.5 * sqrt(3.))
+void register_HoneycombMeshGenerator_class(py::module &m){
+py::class_<HoneycombMeshGenerator , HoneycombMeshGenerator_Overloads , boost::shared_ptr<HoneycombMeshGenerator >   >(m, "HoneycombMeshGenerator")
+        .def(py::init<unsigned int, unsigned int, unsigned int, double >(), py::arg("numNodesAlongWidth"), py::arg("numNodesAlongLength"), py::arg("ghosts") = 0, py::arg("scaleFactor") = 1.)
         .def(py::init< >())
         .def(
             "GetMesh", 
-            (::boost::shared_ptr<MutableVertexMesh<2, 2> >(HoneycombVertexMeshGenerator::*)()) &HoneycombVertexMeshGenerator::GetMesh, 
+            (::boost::shared_ptr<MutableMesh<2, 2> >(HoneycombMeshGenerator::*)()) &HoneycombMeshGenerator::GetMesh, 
+            " "  )
+        .def(
+            "GetCellLocationIndices", 
+            (::std::vector<unsigned int, std::allocator<unsigned int> >(HoneycombMeshGenerator::*)()) &HoneycombMeshGenerator::GetCellLocationIndices, 
+            " "  )
+        .def(
+            "GetCircularMesh", 
+            (::boost::shared_ptr<MutableMesh<2, 2> >(HoneycombMeshGenerator::*)(double)) &HoneycombMeshGenerator::GetCircularMesh, 
+            " " , py::arg("radius") )
+        .def(
+            "GetDomainDepth", 
+            (double(HoneycombMeshGenerator::*)()) &HoneycombMeshGenerator::GetDomainDepth, 
+            " "  )
+        .def(
+            "GetDomainWidth", 
+            (double(HoneycombMeshGenerator::*)()) &HoneycombMeshGenerator::GetDomainWidth, 
             " "  )
     ;
 }
